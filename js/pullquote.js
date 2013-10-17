@@ -16,11 +16,10 @@ jQuery(document).ready(function() {
 		get_short_url(pathname, login, api_key, function(short_url) {
 			shorten_url = short_url;	
 
-			jQuery('.realtidbitsPushquote').each(function(i){
-				jQuery(this).removeClass('realtidbitsPushquote');
-				
+			jQuery('.realtidbitsPushquote').each(function(i) {
+				var direction = jQuery(this).attr('data-float');
 				var pullquote = jQuery('<div />').html(jQuery(this).html());
-				pullquote=	jQuery(pullquote).attr( { class: 'pulled-'+jQuery(this).attr('class') });	
+				jQuery(pullquote).addClass('pulled-'+direction).addClass(direction);	
 	
 				// Social Buttons
 				var $tw_btn = jQuery('<a />')

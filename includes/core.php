@@ -7,7 +7,7 @@ function pullquote_simple_shortcode($atts, $content) {
 		'position' => 'left'
 	), $atts));
 	
-	return "<span class='realtidbitsPushquote ".$position."'>".$content."</span>";
+	return "<span class='realtidbitsPushquote' data-float='".$position."'>".$content."</span>";
 }
 add_shortcode('pullquote', 'pullquote_simple_shortcode');
 
