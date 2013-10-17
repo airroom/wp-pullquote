@@ -20,6 +20,11 @@ jQuery(document).ready(function() {
 				var direction = jQuery(this).attr('data-float');
 				var pullquote = jQuery('<div />').html(jQuery(this).html());
 				jQuery(pullquote).addClass('pulled-'+direction).addClass(direction);	
+
+				var hide_original = jQuery(this).attr('data-hidden');
+				if (hide_original === "true") {
+					jQuery(this).hide();
+				}
 	
 				// Social Buttons
 				var $tw_btn = jQuery('<a />')

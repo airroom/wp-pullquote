@@ -4,10 +4,11 @@
 
 function pullquote_simple_shortcode($atts, $content) {
 	extract(shortcode_atts(array(
-		'position' => 'left'
+		'position' => 'left',
+		'hidden' => 'false'
 	), $atts));
 	
-	return "<span class='realtidbitsPushquote' data-float='".$position."'>".$content."</span>";
+	return "<span class='realtidbitsPushquote' data-float='".$position."' data-hidden='".$hidden."'>".$content."</span>";
 }
 add_shortcode('pullquote', 'pullquote_simple_shortcode');
 
