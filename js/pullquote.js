@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
 	
 				// Social Buttons
 				var $tw_btn = jQuery('<a />')
-									.addClass('pullquote_twitter')
+									.addClass('pullquote__social--twitter')
 									.attr( { href: 'http://twitter.com/share?original_referer='+shorten_url+'&text='+encodeURIComponent((jQuery(this).html().length > 110 ? jQuery(this).html().substr(0, 110)+"... - " : jQuery(this).html())), title: 'Share in Twitter' } )
 									.click(function(event) {
 										var width  = 575,
@@ -47,7 +47,7 @@ jQuery(document).ready(function() {
 										return false;
 								  }),
 				$fb_btn = jQuery('<a />')
-								.addClass('pullquote_facebook')
+								.addClass('pullquote__social--facebook')
 								.attr( { href: 'http://www.facebook.com/share.php?s=100&p[url]='+shorten_url+'&p[title]='+pagetitle+'&p[summary]='+encodeURIComponent(jQuery(this).html()), title: 'Share in Facebook' } )
 								.click(function(event) {
 										var width  = 575,
@@ -76,7 +76,7 @@ jQuery(document).ready(function() {
 				jQuery(pullquote)
 					.append(
 						jQuery('<div />')
-							.addClass('pullquote_social')
+							.addClass('pullquote__social')
 							.append($tw_btn)
 							.append($fb_btn)
 					);

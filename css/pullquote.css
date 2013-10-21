@@ -22,15 +22,15 @@
 	line-height: 120%;
 }
 
-.pullquote_social {
+.pullquote__social {
 	clear: both;
 	margin-top:10px;
 	border-top: 1px solid #f5f5f5;	
 	padding-top: 10px;
 }
 
-.pullquote_social .pullquote_twitter,
-.pullquote_social .pullquote_facebook {
+.pullquote__social--twitter,
+.pullquote__social--facebook {
 	display:block;
 	cursor: pointer;
 	width:16px;
@@ -41,22 +41,22 @@
 	margin-bottom: 10px;
 }
 
-.pullquote_social .pullquote_twitter:hover,
-.pullquote_social .pullquote_facebook:hover {
+.pullquote__social--twitter:hover,
+.pullquote__social--facebook:hover {
 	opacity: 1;
 }
 
-.pullquote_social .pullquote_twitter:active,
-.pullquote_social .pullquote_facebook:active {
+.pullquote__social--twitter:active,
+.pullquote__social--facebook:active {
 	opacity: .5;
 }
 
-.pullquote_social .pullquote_twitter {
-	background: url(../images/twitter.png) 50% 50% no-repeat;
+.pullquote__social--twitter {
+	background: url(../images/twitter.png) 50% 50% no-repeat !important;
 }
 
-.pullquote_social .pullquote_facebook {
-	background: url(../images/facebook.png) 50% 50% no-repeat;
+.pullquote__social--facebook {
+	background: url(../images/facebook.png) 50% 50% no-repeat !important;
 }
 
 .pullquote_copyright {
