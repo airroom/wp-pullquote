@@ -1,24 +1,21 @@
-=== RealTidbits PushQuote ===
-Contributors: dpereyra, kga245, joncianciullo
-Donate link: http://realtidbits.com/
+=== PullQuote ===
+Contributors: ctietze, dpereyra, kga245, joncianciullo
 Tags: pullquotes, social share, quotes
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.7
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-PushQuote turns your pullquotes into quotes your readers can share on Twitter and Facebook.
+PullQuote turns your pullquotes into quotes your readers can share on Twitter and Facebook. It's based on [RealTidbits PushQuote plugin](http://wordpress.org/plugins/pushquote/) plugin.
 
 == Description ==
 
-PushQuote turns your pullquotes into quotes your readers can share on Twitter and Facebook.
-
-Enjoy !
+PullQuote turns your pullquotes into quotes your readers can share on Twitter and Facebook.
 
 == Installation ==
 
-1. Copy the "realtidbits-pushquote" folder into your wordpress "wp-content/plugins/" folder using your favorite FTP program.
+1. Copy the "pullquote" folder into your wordpress "wp-content/plugins/" folder using your favorite FTP program.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 Once the plugin has been activated you will notice a new button in the post editor to add pullquotes.
@@ -41,5 +38,5 @@ Release
 
 = Is it Multi Site ready? =
 
-Yes!. You can use it in any WP Multisite installation.
+Yes, you can use it in any WP Multisite installation.
 
