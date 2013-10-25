@@ -12,11 +12,11 @@ jQuery(document).ready(function() {
   pagetitle = document.title,
   shorten_url = "";
   
-  if(jQuery('.realtidbitsPushquote').length) {
+  if (jQuery('.pullquote-source').length) {
     get_short_url(pathname, login, api_key, function(short_url) {
       shorten_url = short_url;  
 
-      jQuery('.realtidbitsPushquote').each(function(i) {
+      jQuery('.pullquote-source').each(function(i) {
         var direction = jQuery(this).attr('data-float');
         var pullquote = jQuery('<div />').html(jQuery(this).html());
         jQuery(pullquote).addClass('pulled-'+direction).addClass(direction);  

@@ -15,12 +15,12 @@
 global $realtidbitsPushquote;
 $realtidbitsPushquote = get_option('realtidbitsPushquote_options');
 
-define("REALPUSHQUOTE_VER","1.0",false);//Current Version of this plugin
-if ( ! defined( 'REALPUSHQUOTE_PLUGIN_BASENAME' ) )
-    define( 'REALPUSHQUOTE_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-if ( ! defined( 'REALPUSHQUOTE_CSS_DIR' ) ){
-    define( 'REALPUSHQUOTE_CSS_DIR', WP_PLUGIN_DIR.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__)).'/css/' );
+define("PULLQUOTE_VER", "1.0", false);
+
+if (!defined('REALPUSHQUOTE_PLUGIN_BASENAME')) {
+    define('REALPUSHQUOTE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 }
+
 // Create Text Domain For Translations
 load_plugin_textdomain('realtidbitsPushquote', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
@@ -39,25 +39,21 @@ function checkMU_install_realtidbitsPushquote($network_wide) {
 }
 
 function install_realtidbitsPushquote() {
-
-    $default_settings = array();
     $default_settings = array(
-        'active' =>false,
+        'active' => false,
         'show_credits' => false
     );
-   
-    $realtidbitsPushquote = get_option('realtidbitsPushquote_options');
     
     $realtidbitsPushquote = array();
     
-    foreach($default_settings as $key=>$value) {
-      if(!isset($realtidbitsPushquote[$key])) {
+    foreach ($default_settings as $key=>$value) {
+      if (!isset($realtidbitsPushquote[$key])) {
          $realtidbitsPushquote[$key] = $value;
       }
     }
     
     delete_option('realtidbitsPushquote_options');      
-    update_option('realtidbitsPushquote_options',$realtidbitsPushquote);
+    update_option('realtidbitsPushquote_options', $realtidbitsPushquote);
 }
 register_activation_hook( __FILE__, 'checkMU_install_realtidbitsPushquote' );
 
@@ -89,7 +85,7 @@ add_action( 'wpmu_new_blog', 'newBlog_realtidbitsPushquote', 10, 6);
 function newBlog_realtidbitsPushquote($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
     global $wpdb;
  
-    if (is_plugin_active_for_network('realtidbitsPushquote/realtidbitsPushquote.php')) {
+    if (is_plugin_active_for_network('pullquote/pullquote.php')) {
         $old_blog = $wpdb->blogid;
         switch_to_blog($blog_id);
         install_realtidbitsPushquote();
