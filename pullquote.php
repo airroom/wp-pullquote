@@ -21,9 +21,6 @@ if (!defined('REALPUSHQUOTE_PLUGIN_BASENAME')) {
     define('REALPUSHQUOTE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 }
 
-// Create Text Domain For Translations
-load_plugin_textdomain('realtidbitsPushquote', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
-
 function checkMU_install_realtidbitsPushquote($network_wide) {
     global $wpdb;
     if ( $network_wide ) {

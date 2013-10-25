@@ -20,7 +20,6 @@ function pullquote_enqueue_scripts() {
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'realtidbitsPushquote', pullquote_plugin_url( 'js/pullquote.js' ),
             array('jquery'), PULLQUOTE_VER, false); 
-        wp_localize_script( 'realtidbitsPushquote', 'PushquoteAjax', array( 'show_credits' => (is_array($realtidbitsPushquote) ? $realtidbitsPushquote['show_credits'] : 0 ) ) );
     }
 }
 
