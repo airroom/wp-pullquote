@@ -37,4 +37,3 @@ function add_pullquote_tinymce_plugin($plugin_array) {
  
 // init process for button control
 add_action('init', 'pullquote_addbuttons');
-?>

@@ -9,87 +9,77 @@
  * License: GPL2
  */
 
-//on activation
-//defined global variables and constants here
+// TODO currently, $pullquoteOptions contains 'active' only but never uses it
 
-global $realtidbitsPushquote;
-$realtidbitsPushquote = get_option('realtidbitsPushquote_options');
+define("PULLQUOTE_VER", "20131025", false);
 
-define("PULLQUOTE_VER", "1.0", false);
-
-if (!defined('REALPUSHQUOTE_PLUGIN_BASENAME')) {
-    define('REALPUSHQUOTE_PLUGIN_BASENAME', plugin_basename(__FILE__));
+if (!defined('PULLQUOTE_PLUGIN_BASENAME')) {
+    define('PULLQUOTE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 }
 
-function checkMU_install_realtidbitsPushquote($network_wide) {
-    global $wpdb;
-    if ( $network_wide ) {
-        $blog_list = get_blog_list( 0, 'all' );
-        foreach ($blog_list as $blog) {
-            switch_to_blog($blog['blog_id']);
-            install_realtidbitsPushquote();
-        }
-        switch_to_blog($wpdb->blogid);
-    } else {
-        install_realtidbitsPushquote();
-    }
-}
+global $pullquoteOptions;
+$pullquoteOptions = get_option('pullquote_options');
 
-function install_realtidbitsPushquote() {
+require_once(dirname(__FILE__) . '/functions.php');
+require_once(dirname(__FILE__) . '/includes/core.php');
+
+
+function install_pullquote() {
     $default_settings = array(
-        'active' => false,
-        'show_credits' => false
+        'active' => false
     );
-    
-    $realtidbitsPushquote = array();
-    
-    foreach ($default_settings as $key=>$value) {
-      if (!isset($realtidbitsPushquote[$key])) {
-         $realtidbitsPushquote[$key] = $value;
-      }
-    }
-    
-    delete_option('realtidbitsPushquote_options');      
-    update_option('realtidbitsPushquote_options', $realtidbitsPushquote);
+        
+    delete_option('pullquote_options');      
+    update_option('pullquote_options', $default_settings);
 }
-register_activation_hook( __FILE__, 'checkMU_install_realtidbitsPushquote' );
 
-/* Uninstall */
-function checkMU_uninstall_realtidbitsPushquote($network_wide) {
+function uninstall_pullquote() {
+    global $wpdb;
+    delete_option('pullquote_options'); 
+}
+
+/*
+ * MU Options
+ */
+register_activation_hook( __FILE__, 'checkMU_install_pullquote' );
+register_uninstall_hook( __FILE__, 'checkMU_uninstall_pullquote' );
+add_action('wpmu_new_blog', 'newBlog_pullquote', 10, 6);
+
+function checkMU_install_pullquote($network_wide) {
     global $wpdb;
     if ( $network_wide ) {
         $blog_list = get_blog_list( 0, 'all' );
         foreach ($blog_list as $blog) {
             switch_to_blog($blog['blog_id']);
-            uninstall_realtidbitsPushquote();
+            install_pullquote();
         }
         switch_to_blog($wpdb->blogid);
     } else {
-        uninstall_realtidbitsPushquote();
+        install_pullquote();
     }
 }
 
-function uninstall_realtidbitsPushquote() {
+function checkMU_uninstall_pullquote($network_wide) {
     global $wpdb;
-    delete_option('realtidbitsPushquote_options'); 
+    if ( $network_wide ) {
+        $blog_list = get_blog_list( 0, 'all' );
+        foreach ($blog_list as $blog) {
+            switch_to_blog($blog['blog_id']);
+            uninstall_pullquote();
+        }
+        switch_to_blog($wpdb->blogid);
+    } else {
+        uninstall_pullquote();
+    }
 }
-register_uninstall_hook( __FILE__, 'checkMU_uninstall_realtidbitsPushquote' );
 
-/* Add new Blog */
-
-add_action( 'wpmu_new_blog', 'newBlog_realtidbitsPushquote', 10, 6);         
- 
-function newBlog_realtidbitsPushquote($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+function newBlog_pullquote($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
     global $wpdb;
  
     if (is_plugin_active_for_network('pullquote/pullquote.php')) {
         $old_blog = $wpdb->blogid;
         switch_to_blog($blog_id);
-        install_realtidbitsPushquote();
+        install_pullquote();
         switch_to_blog($old_blog);
     }
 }
-
-require_once (dirname (__FILE__) . '/functions.php');
-require_once (dirname (__FILE__) . '/includes/core.php');
-?>

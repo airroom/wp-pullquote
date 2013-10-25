@@ -65,14 +65,6 @@ jQuery(document).ready(function() {
                    
                     return false;
                   });
-        if(PushquoteAjax.show_credits == 1) {
-          jQuery(pullquote)
-            .append(
-              jQuery('<div />')
-                .addClass('pullquote_copyright')
-                .html('Pullquote Plugin by <a href="http://www.pushquote.net" target="_blank">PushQuote</a>')
-            );
-        }
         jQuery(pullquote)
           .append(
             jQuery('<div />')
