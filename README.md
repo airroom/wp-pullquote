@@ -1,6 +1,6 @@
 # Pullquote Plugin
 
-This is a Wordpress plugin to create shareable pullquotes with the `[pushquote]` shortcode, making it backwards compatible to [RealTidbits PushQuote plugin](http://wordpress.org/plugins/pushquote/).
+This is a Wordpress plugin to create shareable pullquotes with the `[pullquote]` shortcode.
 
 ![Example Pullquote](screenshot-2.png)
 
@@ -26,7 +26,7 @@ You can specify the pullquote's position with the `position` attribute.  It take
 
 # License
 
-PullQuote (C) 2013 Christian Tietze
+PullQuote (C) 2013 Christian Tietze  
 PushQuote Copyright (C) RealTidbits (http://wordpress.org/plugins/pushquote/)
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.

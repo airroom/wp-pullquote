@@ -1,30 +1,30 @@
 <?php
 function realtidbitsPushquote_admin_url( $query = array() ) {
-	global $plugin_page;
+    global $plugin_page;
 
-	if ( ! isset( $query['page'] ) )
-		$query['page'] = $plugin_page;
+    if ( ! isset( $query['page'] ) )
+        $query['page'] = $plugin_page;
 
-	$path = 'admin.php';
+    $path = 'admin.php';
 
-	if ( $query = build_query( $query ) )
-		$path .= '?' . $query;
+    if ( $query = build_query( $query ) )
+        $path .= '?' . $query;
 
-	$url = admin_url( $path );
+    $url = admin_url( $path );
 
-	return esc_url_raw( $url );
+    return esc_url_raw( $url );
 }
 
 function realtidbitsPushquote_plugin_url( $path = '' ) {
-	global $wp_version;
-	if ( version_compare( $wp_version, '2.8', '<' ) ) { // Using WordPress 2.7
-		$folder = dirname( plugin_basename( __FILE__ ) );
-		if ( '.' != $folder )
-			$path = path_join( ltrim( $folder, '/' ), $path );
+    global $wp_version;
+    if ( version_compare( $wp_version, '2.8', '<' ) ) { // Using WordPress 2.7
+        $folder = dirname( plugin_basename( __FILE__ ) );
+        if ( '.' != $folder )
+            $path = path_join( ltrim( $folder, '/' ), $path );
 
-		return plugins_url( $path );
-	}
-	return plugins_url( $path, __FILE__ );
+        return plugins_url( $path );
+    }
+    return plugins_url( $path, __FILE__ );
 }
 
 
@@ -65,12 +65,12 @@ class new_general_setting {
         add_settings_field('pushquotes_show_credits', '<label for="show_credits">'.__('Show PushQuotes credits text?' ).'</label>' , array(&$this, 'fields_html') , 'general' );
     }
     function fields_html() {
-		global $realtidbitsPushquote;
-		if(is_array($realtidbitsPushquote)) {
-        	$value = $realtidbitsPushquote['show_credits'];
-		} else {
-			$value = 0;
-		}
+        global $realtidbitsPushquote;
+        if(is_array($realtidbitsPushquote)) {
+            $value = $realtidbitsPushquote['show_credits'];
+        } else {
+            $value = 0;
+        }
         echo '<input type="checkbox" id="realtidbitsPushquote_options[show_credits]" name="realtidbitsPushquote_options[show_credits]" value="1" '.($value ? "checked='checked'" : "").' />';
     }
 }
