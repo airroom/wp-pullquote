@@ -2,7 +2,7 @@
 /**
  * Plugin Name: PullQuote
  * Plugin URI: https://github.com/DivineDominion/wp-pullquote
- * Description: A brief description of the Plugin.
+ * Description: Create shareable pullquotes with the <code>[pullquote]</code> shortcode.
  * Version: 1.0
  * Author: Christian Tietze
  * Author URI: http://christiantietze.de

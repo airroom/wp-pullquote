@@ -1,5 +1,5 @@
 <?php
-function realtidbitsPushquote_admin_url( $query = array() ) {
+function pullquote_admin_url( $query = array() ) {
     global $plugin_page;
 
     if ( ! isset( $query['page'] ) )
@@ -15,7 +15,7 @@ function realtidbitsPushquote_admin_url( $query = array() ) {
     return esc_url_raw( $url );
 }
 
-function realtidbitsPushquote_plugin_url( $path = '' ) {
+function pullquote_plugin_url( $path = '' ) {
     global $wp_version;
     if ( version_compare( $wp_version, '2.8', '<' ) ) { // Using WordPress 2.7
         $folder = dirname( plugin_basename( __FILE__ ) );
@@ -28,50 +28,29 @@ function realtidbitsPushquote_plugin_url( $path = '' ) {
 }
 
 
-function realtidbitsPushquote_addbuttons() {
+function pullquote_addbuttons() {
    // Don't bother doing this stuff if the current user lacks permissions
    if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') )
      return;
  
    // Add only in Rich Editor mode
    if ( get_user_option('rich_editing') == 'true') {
-     add_filter("mce_external_plugins", "add_realtidbitsPushquote_tinymce_plugin");
-     add_filter('mce_buttons', 'register_realtidbitsPushquote_button');
+     add_filter("mce_external_plugins", "add_pullquote_tinymce_plugin");
+     add_filter('mce_buttons', 'register_pullquote_button');
    }
 }
  
-function register_realtidbitsPushquote_button($buttons) {
+function register_pullquote_button($buttons) {
    array_push($buttons, "pullquote");
    return $buttons;
 }
  
 // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
-function add_realtidbitsPushquote_tinymce_plugin($plugin_array) {
-   $plugin_array['pullquote'] = realtidbitsPushquote_plugin_url().'/tinymce/pullquote.js';
+function add_pullquote_tinymce_plugin($plugin_array) {
+   $plugin_array['pullquote'] = pullquote_plugin_url().'/tinymce/pullquote.js';
    return $plugin_array;
 }
  
 // init process for button control
-add_action('init', 'realtidbitsPushquote_addbuttons');
-
-$new_general_setting = new new_general_setting();
- 
-class new_general_setting {
-    function new_general_setting( ) {
-        add_filter( 'admin_init' , array( &$this , 'register_fields' ) );
-    }
-    function register_fields() {
-        register_setting( 'general', 'realtidbitsPushquote_options' );
-        add_settings_field('pushquotes_show_credits', '<label for="show_credits">'.__('Show PushQuotes credits text?' ).'</label>' , array(&$this, 'fields_html') , 'general' );
-    }
-    function fields_html() {
-        global $realtidbitsPushquote;
-        if(is_array($realtidbitsPushquote)) {
-            $value = $realtidbitsPushquote['show_credits'];
-        } else {
-            $value = 0;
-        }
-        echo '<input type="checkbox" id="realtidbitsPushquote_options[show_credits]" name="realtidbitsPushquote_options[show_credits]" value="1" '.($value ? "checked='checked'" : "").' />';
-    }
-}
+add_action('init', 'pullquote_addbuttons');
 ?>
