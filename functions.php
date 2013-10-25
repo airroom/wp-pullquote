@@ -1,20 +1,4 @@
 <?php
-function pullquote_admin_url( $query = array() ) {
-    global $plugin_page;
-
-    if ( ! isset( $query['page'] ) )
-        $query['page'] = $plugin_page;
-
-    $path = 'admin.php';
-
-    if ( $query = build_query( $query ) )
-        $path .= '?' . $query;
-
-    $url = admin_url( $path );
-
-    return esc_url_raw( $url );
-}
-
 function pullquote_plugin_url( $path = '' ) {
     global $wp_version;
     if ( version_compare( $wp_version, '2.8', '<' ) ) { // Using WordPress 2.7
