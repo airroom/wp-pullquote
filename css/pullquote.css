@@ -1,4 +1,3 @@
-
 .pulled-right {
   display: block;
   float: right;
@@ -10,51 +9,67 @@
   border-left: 3px solid #CCC;
   line-height: 120%;
 }
+
 .pulled-left {
+  position: relative;
   display: block;
-  float: left;
-  padding: 0 10px 0 0;
-  width: 200px;
-  font-size: 18px;
+  padding: 0 20px 0 0;
+  font-size: 25px;
   text-align: left;
-  color: #A1A1A1;
-  border-right: 3px solid #CCC;
-  line-height: 120%;
+  font-weight: 600;
+  font-style: italic;
+  color: #00afed;
+  border-right: 8px solid #00afed;
+  line-height: 136%;
+  margin-bottom: 40px;
+  margin: 30px 10px 30px 0;
 }
 
 .pullquote__social {
-  clear: both;
-  margin-top:10px;
-  border-top: 1px solid #f5f5f5;  
-  padding-top: 10px;
+  position: absolute;
+  margin: 0;
+  left: auto;
+  right: -4px;
+  width: 28px;
+  -webkit-transform: translate3d(50%, -50%, 0px);
+  -moz-transform: translate3d(50%, -50%, 0px);
+  transform: translate3d(50%, -50%, 0px);
+  top: 50%;
 }
 
 .pullquote__social--twitter,
-.pullquote__social--facebook {
-  display:block;
+.pullquote__social--facebook,
+.pullquote__social--linkedin {
+  display: block;
   cursor: pointer;
-  width:16px;
-  height:16px;
-  opacity: .6;
+  width: 16px;
+  height: 16px;
   float: left;
-  margin-right: 10px;
   margin-bottom: 10px;
-}
-
-.pullquote__social--twitter:hover,
-.pullquote__social--facebook:hover {
-  opacity: 1;
-}
-
-.pullquote__social--twitter:active,
-.pullquote__social--facebook:active {
-  opacity: .5;
+  background-color: #fff !important;
+  padding: 12px;
+  border: 2px solid #00afed;
+  border-radius: 50%;
 }
 
 .pullquote__social--twitter {
-  background: url(../images/twitter.png) 50% 50% no-repeat !important;
+  background-image: url(../images/twitter.png);
+  background-size: 69%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .pullquote__social--facebook {
-  background: url(../images/facebook.png) 50% 50% no-repeat !important;
+  background-image: url(../images/facebook.png) 50% 50% no-repeat !important;
+}
+
+.pullquote__social--linkedin {
+  background-image: url(../images/linkedin.png);
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.pullquote__social a:last-child { 
+  margin-bottom: 0px !important;
 }

@@ -1,24 +1,24 @@
 <?php
 /**
- * Plugin Name: PullQuote
- * Plugin URI: https://github.com/DivineDominion/wp-pullquote
+ * Plugin Name: PullQuote (Romário)
+ * Plugin URI: https://github.com/airroom/wp-pullquote
  * Description: Create shareable pullquotes with the <code>[pullquote]</code> shortcode.
  * Version: 1.0
- * Author: Christian Tietze
- * Author URI: http://christiantietze.de
+ * Author: Romário S. Lima
+ * Author URI: https://github.com/airroom/
  * License: GPL2
  */
 
 // TODO currently, $pullquoteOptions contains 'active' only but never uses it
 
-define("PULLQUOTE_VER", "20131025", false);
+define("PULLQUOTE_VER", "20160314", false);
 
 if (!defined('PULLQUOTE_PLUGIN_BASENAME')) {
     define('PULLQUOTE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 }
 
 global $pullquoteOptions;
-$pullquoteOptions = get_option('pullquote_options');
+$pullquoteOptions = get_option('pullquote_airroom_options');
 
 require_once(dirname(__FILE__) . '/functions.php');
 require_once(dirname(__FILE__) . '/includes/core.php');
@@ -29,13 +29,13 @@ function install_pullquote() {
         'active' => false
     );
         
-    delete_option('pullquote_options');      
-    update_option('pullquote_options', $default_settings);
+    delete_option('pullquote_airroom_options');      
+    update_option('pullquote_airroom_options', $default_settings);
 }
 
 function uninstall_pullquote() {
     global $wpdb;
-    delete_option('pullquote_options'); 
+    delete_option('pullquote_airroom_options'); 
 }
 
 /*
